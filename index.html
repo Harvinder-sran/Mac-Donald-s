@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>shaina Cafe</title>
+    <link rel="stylesheet" href="Shaina cafe.css">
+    <script src="Shaina.js"></script>
+</head>
+<body>
+    <!-- Header Section -->
+<header id="header" class="header-section">
+    <div class="header-content">
+        <h1>Shina Cafe</h1>
+        <nav class="navbar">
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="#home" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="#menu-highlights" class="nav-link">Menu</a></li>
+                <li class="nav-item"><a href="#events" class="nav-link">Events</a></li>
+                <li class="nav-item"><a href="#reservation" class="nav-link">Reservation</a></li>
+                <li class="nav-item"><a href="#delivery" class="nav-link">Delivery</a></li>
+                <li class="nav-item"><a href="#contact-us" class="nav-link">Contact Us</a></li>
+                <li class="nav-item"><a href="#about" class="nav-link">About Us</a></li>
+
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<!-- Hero Section -->
+    <header class="hero-section" id="home">
+        <div class="hero-content">
+            <h1>Welcome to shaina Cafe</h1>
+            <p>Experience the Taste of Authentic Cuisine</p>
+            <a href="#menu" class="cta-button">View Menu</a>
+        </div>
+    </header>
+
+<!-- Menu Highlights Section -->
+<section id="menu-highlights" class="menu-highlights-section">
+    <div class="menu-highlights-content">
+        <h2>Menu Highlights</h2>
+        <div class="menu-items">
+            <div class="menu-item">
+                <img src="dish1.jpg" alt="Dish 1">
+                <h3>Burger</h3>
+                <p>A juicy burger bursting with flavors, topped with fresh ingredients 
+                    and served on a perfectly toasted bun. A must-try delight!</p>
+            </div>
+            <div class="menu-item">
+                <img src="dish2.jpg" alt="Dish 2">
+                <h3>Pizza</h3>
+                <p>A mouthwatering pizza featuring a blend of premium toppings and gooey cheese,
+                     all atop a perfectly crispy crust. Each bite delivers a burst of flavor,
+                      with a balance of savory, tangy, and cheesy goodness that makes every slice a delectable experience.
+                </p>
+            </div>
+            <div class="menu-item">
+                <img src="dish3.jpg" alt="Dish 3">
+                <h3>Fries</h3>
+                <p>Crispy, golden fries seasoned to perfection,
+                     offering a delightful crunch and a burst of savory goodness in every bite.</p>
+            </div>
+            <div class="menu-item">
+                <img src="dish5.jpg" alt="Dish 4">
+                <h3>Beverages</h3>
+                <p>Explore our range of beverages, from refreshing soft drinks to artisanal coffee and exquisite teas.</p>
+            </div>
+            <div class="menu-item">
+                <img src="dish3.jpg" alt="Dish 3">
+                <h3>Fries</h3>
+                <p>Crispy, golden fries seasoned to perfection,
+                     offering a delightful crunch and a burst of savory goodness in every bite.</p>
+            </div>
+            <div class="menu-item">
+                <img src="dish5.jpg" alt="Dish 4">
+                <h3>Beverages</h3>
+                <p>Explore our range of beverages, from refreshing soft drinks to artisanal coffee and exquisite teas.</p>
+            </div>
+        </div>
+        <a href="#" class="full-menu-button" onclick="openSlideshow()">See Full Menu</a>
+    </div>
+</section>
+
+<!-- Slideshow Modal -->
+<div id="slideshowModal" class="slideshow-modal">
+    <span class="close" onclick="closeSlideshow()">&times;</span>
+    <div class="slideshow-container">
+        <div class="mySlides fade">
+            <img src="menu1.jpg" alt="Menu 1">
+        </div>
+        <div class="mySlides fade">
+            <img src="menu2.jpg" alt="Menu 2">
+        </div>
+        <div class="mySlides fade">
+            <img src="menu3.jpg" alt="Menu 3">
+        </div>
+    </div>
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+</div>
+
+
+<!-- Events Section -->
+    <section id="events" class="events-section">
+        <div class="events-content">
+            <h2>Upcoming Events</h2>
+            <div class="event-items">
+                <div class="event-item">
+                    <h3>Live Music Night</h3>
+                    <p>Date: August 12, 2024</p>
+                    <p>Enjoy an evening of live music featuring local artists.</p>
+                </div>
+                <div class="event-item">
+                    <h3>Wine Tasting Event</h3>
+                    <p>Date: September 5, 2024</p>
+                    <p>Join us for a wine tasting experience with a selection of fine wines.</p>
+                </div>
+                <div class="event-item">
+                    <h3>Cooking Class</h3>
+                    <p>Date: October 20, 2024</p>
+                    <p>Learn to cook some of our signature dishes with our head chef.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+<!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials-section">
+        <div class="testimonials-content">
+            <h2>What Our Customers Say</h2>
+            <div class="testimonial-items">
+                <div class="testimonial-item">
+                    <p class="testimonial-text">"shaina Cafe offers an amazing dining experience! The food is delicious and the atmosphere is wonderful. Highly recommended!"</p>
+                    <p class="testimonial-author">- Alex Johnson</p>
+                </div>
+                <div class="testimonial-item">
+                    <p class="testimonial-text">"I love the variety of dishes available at shaina Cafe. Every meal I've had here has been outstanding. The staff is very friendly and welcoming."</p>
+                    <p class="testimonial-author">- Sarah Williams</p>
+                </div>
+                <div class="testimonial-item">
+                    <p class="testimonial-text">"The best cafe in town! shaina Cafe's attention to detail and quality ingredients make it a must-visit. I'll definitely be coming back often."</p>
+                    <p class="testimonial-author">- David Brown</p>
+                </div>
+            </div>
+        </div>
+    </section>
+<!-- Reservation Section -->
+    <section id="reservation" class="reservation-section">
+        <div class="reservation-content">
+            <h2>Make a Reservation</h2>
+            <p>Reserve your table today and enjoy an unforgettable dining experience at shaina Cafe.</p>
+            <form class="reservation-form">
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="date">Date:</label>
+                    <input type="date" id="date" name="date" required>
+                </div>
+                <div class="form-group">
+                    <label for="time">Time:</label>
+                    <input type="time" id="time" name="time" required>
+                </div>
+                <div class="form-group">
+                    <label for="guests">Number of Guests:</label>
+                    <input type="number" id="guests" name="guests" min="1" required>
+                </div>
+                <button type="submit" class="reservation-button">Reserve Now</button>
+            </form>
+        </div>
+<!-- Location -->
+    </section>
+    <section id="hours-location" class="hours-location-section">
+        <div class="hours-location-content">
+            <h2>Hours & Location</h2>
+            <div class="info-container">
+                <div class="hours">
+                    <h3>Opening Hours</h3>
+                    <ul>
+                        <li>Monday - Friday: 8:00 AM - 10:00 PM</li>
+                        <li>Saturday: 9:00 AM - 11:00 PM</li>
+                        <li>Sunday: 9:00 AM - 9:00 PM</li>
+                    </ul>
+                </div>
+                <div class="location">
+                    <h3>Our Location</h3>
+                    <p>123 shaina Street, Food City, FC 45678</p>
+<!-- Embed Google Map -->
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3456.6575908737555!2d74.70240537534154!3d29.960526174965963!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3916d9f4bfc3d5df%3A0x3a1d9b1771d2664f!2sShaina%20Cafe%20Dabwali!5e0!3m2!1sen!2sin!4v1722269671441!5m2!1sen!2sin" 
+                    width="600" 
+                    height="450" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- Delivery -->
+<section id="delivery" class="delivery-section">
+    <div class="delivery-content">
+        <h2>Delivery</h2>
+        <p>Enjoy our delicious meals from the comfort of your home. We deliver to your doorstep!</p>
+        <div class="delivery-info">
+            <div class="delivery-details">
+                <h3>How to Order</h3>
+                <ol>
+                    <li>Browse our <a href="#menu">Menu</a> and select your favorite dishes.</li>
+                    <li>Call us at +91 93069 73714 or order online through our delivery partners.</li>
+                    <li>Relax and wait for your delicious meal to arrive!</li>
+                </ol>
+            </div>
+            <div class="delivery-partners">
+                <h3>Our Delivery Partners</h3>
+                <ul>
+                    <li><a href="#">Zomato</a></li>
+                    <li><a href="#">Swiggy</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Us Section -->
+<section id="contact-us" class="contact-us-section">
+    <div class="contact-us-content">
+        <h2>Contact Us</h2>
+        <p>If you have any questions or need further information, please feel free to contact us using the form below.</p>
+        <form class="contact-form">
+            <div class="form-group">
+                <label for="contact-name">Name:</label>
+                <input type="text" id="contact-name" name="contact-name" required>
+            </div>
+            <div class="form-group">
+                <label for="contact-email">Email:</label>
+                <input type="email" id="contact-email" name="contact-email" required>
+            </div>
+            <div class="form-group">
+                <label for="contact-message">Message:</label>
+                <textarea id="contact-message" name="contact-message" rows="5" required></textarea>
+            </div>
+            <button type="submit" class="contact-button">Send Message</button>
+        </form>
+    </div>
+</section>
+
+<!-- About Us Section -->
+<section id="about" class="about-section">
+    <div class="about-content">
+        <h2>About Us</h2>
+        <p>shaina Cafe was established with a mission to provide our guests with an unforgettable dining experience. Our chefs use the finest ingredients to create dishes that are both delicious and visually stunning. Come and enjoy the cozy atmosphere and excellent service at shaina Cafe.</p>
+    </div>
+    <div class="about-gallery">
+        <img src="interior.jpg.avif" alt="Cafe Interior">
+        <img src="exterior.jpg.webp" alt="Cafe Exterior">
+        <img src="dish.jpg" alt="Signature Dish">
+    </div>
+</section>
+
+<!-- Footer Section -->
+<footer id="footer" class="footer-section">
+    <div class="footer-content">
+        <div class="footer-info">
+            <h2>Shina Cafe</h2>
+            <p>XP64+62J, Chautala Rd, nr. State Bank of India, Friends Colony, Mandi Dabwali, Haryana 125104</p>
+            <p>Phone: +91 93069 73714</p>
+            <p>Email: <a href="mailto:harvindersran75@shinacafe.com">harvindersran75@shinacafe.com</a></p>
+        </div>
+        <div class="footer-links">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                <li><a href="refund-policy.html">Refund Policy</a></li>
+            </ul>
+        </div>
+        <div class="footer-social">
+            <h3>Follow Us</h3>
+            <div class="social-icons">
+                <a href="https://facebook.com/shinacafe" target="_blank" class="social-icon">
+                    <img src="facebook-icon.png" alt="Facebook">
+                </a>
+                <a href="https://twitter.com/shinacafe" target="_blank" class="social-icon">
+                    <img src="twitter-icon.png" alt="Twitter">
+                </a>
+                <a href="https://www.instagram.com/shainacafe_dabwali_?igsh=MTJiamE4NDNkam12Yw==" target="_blank" class="social-icon">
+                    <img src="instagram-icon.png" alt="Instagram">
+                </a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Shina Cafe. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+</body>
+</html>
