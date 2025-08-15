@@ -244,6 +244,11 @@ body {
 .full-menu-button:hover {
     background-color: #e6c200;
 }
+.full-menu-button-container {
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
 /* Menu Highlights Section */
 .menu-highlights-section {
     padding: 60px 20px;
