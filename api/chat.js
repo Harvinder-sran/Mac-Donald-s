@@ -1,18 +1,22 @@
 import OpenAI from "openai";
 
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY
-});
-
 export default async function handler(req, res) {
-  if (req.method !== "POST") {
-    return res.status(405).end();
-  }
-
-  const { message } = req.body;
-
   try {
-    const response = await openai.responses.create({
+    if (req.method !== "POST") {
+      return res.status(405).json({ error: "Method not allowed" });
+    }
+
+    if (!process.env.OPENAI_API_KEY) {
+      throw new Error("OPENAI_API_KEY is missing");
+    }
+
+    const { message } = req.body;
+
+    const client = new OpenAI({
+      apiKey: process.env.OPENAI_API_KEY
+    });
+
+    const response = await client.responses.create({
       model: "gpt-4.1-mini",
       input: message,
       instructions: `
@@ -23,11 +27,14 @@ If the answer is missing, say exactly:
 `
     });
 
-    res.status(200).json({
+    return res.status(200).json({
       reply: response.output_text
     });
+
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    console.error("API ERROR:", err);
+    return res.status(500).json({
+      error: err.message || "Internal Server Error"
+    });
   }
 }
-
