@@ -12,32 +12,162 @@
 
 
     <!-- CHATBOT OPENAI -->
-<div id="messages"></div>
-<input id="input" placeholder="Ask something…" />
+<!-- ================== FLOATING CHATBOT (ALL-IN-ONE) ================== -->
+<style>
+  /* Chat bubble */
+  #chat-bubble {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    background: #ffd700;
+    color: #000;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    cursor: pointer;
+    z-index: 99999;
+    box-shadow: 0 10px 25px rgba(0,0,0,.25);
+  }
+
+  /* Chat widget */
+  #chat-widget {
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
+    width: 340px;
+    height: 440px;
+    background: #ffffff;
+    border-radius: 14px;
+    box-shadow: 0 15px 35px rgba(0,0,0,.3);
+    display: none;
+    flex-direction: column;
+    z-index: 99999;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+  }
+
+  /* Header */
+  #chat-header {
+    background: #000;
+    color: #ffd700;
+    padding: 12px 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+  }
+
+  #chat-close {
+    background: none;
+    border: none;
+    color: #ffd700;
+    font-size: 22px;
+    cursor: pointer;
+    line-height: 1;
+  }
+
+  /* Messages */
+  #chat-messages {
+    flex: 1;
+    padding: 12px;
+    overflow-y: auto;
+    background: #f7f7f7;
+    color: #000;
+    font-size: 14px;
+  }
+
+  #chat-messages p {
+    margin: 0 0 8px 0;
+  }
+
+  /* Input */
+  #chat-input {
+    border: none;
+    border-top: 1px solid #ddd;
+    padding: 12px;
+    font-size: 14px;
+    outline: none;
+    width: 100%;
+    box-sizing: border-box;
+  }
+</style>
+
+<!-- Chat bubble -->
+<div id="chat-bubble" title="Chat with us">💬</div>
+
+<!-- Chat widget -->
+<div id="chat-widget">
+  <div id="chat-header">
+    <span>Shina Cafe Assistant</span>
+    <button id="chat-close">×</button>
+  </div>
+
+  <div id="chat-messages"></div>
+
+  <input
+    id="chat-input"
+    type="text"
+    placeholder="Ask something..."
+    autocomplete="off"
+  />
+</div>
 
 <script>
-const input = document.getElementById("input");
-const messages = document.getElementById("messages");
+  // Elements
+  const chatBubble = document.getElementById("chat-bubble");
+  const chatWidget = document.getElementById("chat-widget");
+  const chatClose  = document.getElementById("chat-close");
+  const chatInput  = document.getElementById("chat-input");
+  const chatMsgs   = document.getElementById("chat-messages");
 
-input.addEventListener("keydown", async (e) => {
-  if (e.key !== "Enter") return;
-
-  const text = input.value.trim();
-  if (!text) return;
-
-  messages.innerHTML += `<p><b>You:</b> ${text}</p>`;
-  input.value = "";
-
-  const res = await fetch("/api/chat", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ message: text })
+  // Open chat
+  chatBubble.addEventListener("click", () => {
+    chatWidget.style.display = "flex";
+    chatBubble.style.display = "none";
+    chatInput.focus();
   });
 
-  const data = await res.json();
-  messages.innerHTML += `<p><b>Bot:</b> ${data.reply}</p>`;
-});
+  // Close chat
+  chatClose.addEventListener("click", () => {
+    chatWidget.style.display = "none";
+    chatBubble.style.display = "flex";
+  });
+
+  // Send message
+  chatInput.addEventListener("keydown", async (e) => {
+    if (e.key !== "Enter") return;
+
+    const text = chatInput.value.trim();
+    if (!text) return;
+
+    // Show user message
+    chatMsgs.innerHTML += `<p><strong>You:</strong> ${text}</p>`;
+    chatInput.value = "";
+    chatMsgs.scrollTop = chatMsgs.scrollHeight;
+
+    try {
+      const res = await fetch("/api/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: text })
+      });
+
+      const data = await res.json();
+
+      // Show bot reply
+      chatMsgs.innerHTML += `<p><strong>Bot:</strong> ${data.reply}</p>`;
+      chatMsgs.scrollTop = chatMsgs.scrollHeight;
+    } catch (err) {
+      chatMsgs.innerHTML += `<p><strong>Bot:</strong> Error. Please try again.</p>`;
+    }
+  });
 </script>
+<!-- ================== END FLOATING CHATBOT ================== -->
+
 
 
 
@@ -329,6 +459,7 @@ input.addEventListener("keydown", async (e) => {
 
 </body>
 </html>
+
 
 
 
