@@ -10,12 +10,35 @@
 <body>
 
 
-<!-- ChatKit -->
-<iframe
-  src="https://chat.openai.com/embed/workflows/wf_697443aedce0819082f51e69897c32550e1c57fd79413983?key=domain_pk_69744adf22f481949c10bba294d6df190f34d1e04ce687bd"
-  style="width:100%; height:600px; border:none; border-radius:12px;"
-  allow="clipboard-write; microphone"
-></iframe>
+
+    <!-- CHATBOT OPENAI -->
+<div id="messages"></div>
+<input id="input" placeholder="Ask something…" />
+
+<script>
+const input = document.getElementById("input");
+const messages = document.getElementById("messages");
+
+input.addEventListener("keydown", async (e) => {
+  if (e.key !== "Enter") return;
+
+  const text = input.value.trim();
+  if (!text) return;
+
+  messages.innerHTML += `<p><b>You:</b> ${text}</p>`;
+  input.value = "";
+
+  const res = await fetch("/api/chat", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ message: text })
+  });
+
+  const data = await res.json();
+  messages.innerHTML += `<p><b>Bot:</b> ${data.reply}</p>`;
+});
+</script>
+
 
 
 
@@ -306,6 +329,7 @@
 
 </body>
 </html>
+
 
 
 
