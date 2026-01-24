@@ -20,20 +20,23 @@
 <body>
 
 <!-- ChatKit -->
-<script src="https://cdn.openai.com/chatkit/chatkit.js"></script>
+<script type="module" src="https://cdn.platform.openai.com/deployments/chatkit/chatkit.js"></script>
 
-<div id="chatkit" style="height:600px;"></div>
+<openai-chatkit
+  id="my-chat-widget"
+  workflow-id="wf_697443aedce0819082f51e69897c32550e1c57fd79413983"
+  domain-key="domain_pk_69744adf22f481949c10bba294d6df190f34d1e04ce687bd"
+></openai-chatkit>
 
 <script>
-  ChatKit.init({
-    workflowId: "wf_697443aedce0819082f51e69897c32550e1c57fd79413983",
-    apiKey: "domain_pk_69744adf22f481949c10bba294d6df190f34d1e04ce687bd",
-    container: "#chatkit"
+  // Wait for the element to be defined before messing with it
+  customElements.whenDefined('openai-chatkit').then(() => {
+    const chatWidget = document.getElementById('my-chat-widget');
+    
+    // Check your console. If this fails, your domain is likely not allowlisted in OpenAI settings.
+    console.log("ChatKit loaded:", chatWidget);
   });
 </script>
-
-</body>
-</html>
 
 
 
@@ -323,6 +326,7 @@
 
 </body>
 </html>
+
 
 
 
