@@ -117,28 +117,30 @@
 </div>
 
 <script>
+  // ================= MEMORY =================
   let conversation = [];
-  // Elements
+
+  // ================= ELEMENTS =================
   const chatBubble = document.getElementById("chat-bubble");
   const chatWidget = document.getElementById("chat-widget");
   const chatClose  = document.getElementById("chat-close");
   const chatInput  = document.getElementById("chat-input");
   const chatMsgs   = document.getElementById("chat-messages");
 
-  // Open chat
+  // ================= OPEN CHAT =================
   chatBubble.addEventListener("click", () => {
     chatWidget.style.display = "flex";
     chatBubble.style.display = "none";
     chatInput.focus();
   });
 
-  // Close chat
+  // ================= CLOSE CHAT =================
   chatClose.addEventListener("click", () => {
     chatWidget.style.display = "none";
     chatBubble.style.display = "flex";
   });
 
-  // Send message
+  // ================= SEND MESSAGE =================
   chatInput.addEventListener("keydown", async (e) => {
     if (e.key !== "Enter") return;
 
@@ -150,38 +152,36 @@
     chatInput.value = "";
     chatMsgs.scrollTop = chatMsgs.scrollHeight;
 
-try {
-  // save user message to memory
-  conversation.push({ role: "user", content: text });
+    try {
+      // Save user message to memory
+      conversation.push({ role: "user", content: text });
 
-  const res = await fetch("/api/chat", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ messages: conversation })
-  });
+      const res = await fetch("/api/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ messages: conversation })
+      });
 
-  const data = await res.json();
+      const data = await res.json();
 
-  // save bot reply to memory
-  conversation.push({ role: "assistant", content: data.reply });
+      // Save bot reply to memory
+      conversation.push({ role: "assistant", content: data.reply });
 
-  // show bot reply
-  chatMsgs.innerHTML += `<p><strong>Bot:</strong> ${data.reply}</p>`;
-  chatMsgs.scrollTop = chatMsgs.scrollHeight;
+      // Show bot reply
+      chatMsgs.innerHTML += `<p><strong>Bot:</strong> ${data.reply}</p>`;
+      chatMsgs.scrollTop = chatMsgs.scrollHeight;
 
-  // limit memory
-  if (conversation.length > 8) {
-    conversation = conversation.slice(-8);
-  }
+      // Limit memory size
+      if (conversation.length > 8) {
+        conversation = conversation.slice(-8);
+      }
 
-} catch (err) {
-  chatMsgs.innerHTML += `<p><strong>Bot:</strong> Error. Please try again.</p>`;
-}
- catch (err) {
+    } catch (err) {
       chatMsgs.innerHTML += `<p><strong>Bot:</strong> Error. Please try again.</p>`;
     }
   });
 </script>
+
 <!-- ================== END FLOATING CHATBOT ================== -->
 
 
@@ -475,6 +475,7 @@ try {
 
 </body>
 </html>
+
 
 
 
