@@ -1,28 +1,3 @@
-// Chatbot Memory 
-let conversation = [];
-// save user message
-conversation.push({ role: "user", content: text });
-
-// send full conversation
-const res = await fetch("/api/chat", {
-  method: "POST",
-  headers: { "Content-Type": "application/json" },
-  body: JSON.stringify({ messages: conversation })
-});
-
-const data = await res.json();
-
-// save bot reply
-conversation.push({ role: "assistant", content: data.reply });
-
-// keep memory small
-if (conversation.length > 8) {
-  conversation = conversation.slice(-8);
-}
-
-
-
-
 // JavaScript for Slideshow Modal
 let slideIndex = 1;
 
@@ -53,4 +28,5 @@ function showSlides(n) {
     }
     slides[slideIndex-1].style.display = "block";
 }
+
 
